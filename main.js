@@ -6,16 +6,17 @@ import View from 'ol/View';
 import WMTS from 'ol/source/WMTS';
 import WMTSTileGrid from 'ol/tilegrid/WMTS';
 import {get as getProjection} from 'ol/proj';
-import {getTopLeft, getWidth} from 'ol/extent';
+import {getCenter, getWidth} from 'ol/extent';
 import proj4 from 'proj4';
 import {register} from 'ol/proj/proj4';
 
-proj4.defs("EPSG:3042","+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
+proj4.defs(process.env.CRS, process.env.CRS_DEF);
 register(proj4);
 
-var projection = getProjection('EPSG:3042');
+var projection = getProjection(process.env.CRS);
 // var projectionExtent = projection.getExtent();
-var projectionExtent = [-729785.76, 3715125.82, 945351.10, 9522561.39]
+var projectionExtent = process.env.CRS_EXTENT.split(' ').map(e => parseFloat(e));
+var projectionCenter = getCenter(projectionExtent);
 
 // var gridExtent = [157882.23263045703, 5522588.664938651, 5522588.664938651, 5522588.664938651]
 var size = getWidth(projectionExtent) / 256;
@@ -24,7 +25,7 @@ var matrixIds = new Array(14);
 for (var z = 0; z < 14; ++z) {
   // generate resolutions and matrixIds arrays for this WMTS
   resolutions[z] = size / Math.pow(2, z);
-  matrixIds[z] = `EPSG:3042:${z}`;
+  matrixIds[z] = `${process.env.CRS}:${z}`;
 }
 
 var map = new Map({
@@ -34,7 +35,7 @@ var map = new Map({
       source: new WMTS({
         url: process.env.WMTS_URL,
         layer: 'oi-pilot:project_oi-pilot',
-        matrixSet: 'EPSG:3042',
+        matrixSet: process.env.CRS,
         format: 'image/png',
         projection: projection,
         tileGrid: new WMTSTileGrid({
@@ -49,7 +50,7 @@ var map = new Map({
   target: 'map',
   view: new View({
     projection: projection,
-    center: [721855, 5765740],
+    center: projectionCenter,
     zoom: 4,
   }),
 });

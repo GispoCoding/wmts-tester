@@ -1,0 +1,26 @@
+{
+  "name": "wmts-tester",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "ol": "6.5.0",
+    "proj4": "^2.7.0"
+  },
+  "devDependencies": {
+    "@parcel/optimizer-cssnano": "^2.0.0-nightly.587",
+    "@parcel/optimizer-htmlnano": "^2.0.0-nightly.587",
+    "@parcel/packager-css": "^2.0.0-nightly.587",
+    "@parcel/packager-html": "^2.0.0-nightly.587",
+    "@parcel/transformer-css": "^2.0.0-nightly.587",
+    "@parcel/transformer-html": "^2.0.0-nightly.587",
+    "@parcel/transformer-postcss": "^2.0.0-nightly.587",
+    "@parcel/transformer-posthtml": "^2.0.0-nightly.587",
+    "parcel": "^2.0.0-beta.1"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "author": "Mikael Vaaltola",
+  "license": "ISC"
+}

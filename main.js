@@ -34,7 +34,7 @@ var map = new Map({
       opacity: 0.7,
       source: new WMTS({
         url: process.env.WMTS_URL,
-        layer: 'oi-pilot:project_oi-pilot',
+        layer: process.env.LAYER,
         matrixSet: process.env.CRS,
         format: 'image/png',
         projection: projection,

@@ -11,6 +11,7 @@ WMTS_URL=<your-wmts-service-url-here>
 CRS=EPSG:3042
 CRS_DEF="+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 CRS_EXTENT="-729785.76, 3715125.82, 945351.10, 9522561.39"
+LAYER="oi-pilot:project_oi-pilot"
 ```
 
 For locally hosted GS GWC WMTS, the url is something like http://localhost:8080/geoserver/gwc/service/wmts

@@ -21,7 +21,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build --public-url . index.html",
-    "predeploy": "rm -rf dist && parcel build ./*.html --public-url https://github.com/GispoCoding/wmts-tester",
+    "predeploy": "rm -rf dist && parcel build ./*.html --public-url .",
     "deploy": "gh-pages -d dist"
   },
   "author": "Joona Laine",

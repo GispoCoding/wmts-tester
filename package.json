@@ -21,6 +21,6 @@
     "start": "parcel index.html",
     "build": "parcel build --public-url . index.html"
   },
-  "author": "Mikael Vaaltola",
+  "author": "Joona Laine",
   "license": "ISC"
 }
